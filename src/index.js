@@ -20,9 +20,15 @@ class SmartCalculator {
     return this.currentOperation.func(this.stack,this.currentOperation.value);
   }
 
-  calculateWithPriority() {}
+  calculateWithPriority() {
+    return checkPriority() ? calculate() : swapOperations();
+  }
 
-  checkPriority() {}
+  swapOperations() {}
+
+  checkPriority() {
+    return this.currentOperation.priority < this.previousOperation.priority || false;
+  }
 
   setOperation(number, func, priority) {
     this.currentOperation.value = number;
